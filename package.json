@@ -1,0 +1,36 @@
+{
+  "name": "mdxtractor",
+  "private": true,
+  "version": "0.1.0",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "format": "bunx oxfmt",
+    "lint": "bunx oxlint",
+    "check": "bun scripts/before-commit.ts"
+  },
+  "dependencies": {
+    "bunup": "^0.16.26"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "oxfmt": "^0.32.0",
+    "oxlint": "^1.47.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
