@@ -11,7 +11,7 @@ bun install
 ## Usage
 
 ```ts
-import { parseMarkdown, extractComponents, generateTypes } from "mdxtractor";
+import { parseMarkdown, extractComponents, generateTypes } from 'mdxtractor'
 
 // Parse markdown into structured sections
 const doc = await parseMarkdown(`
@@ -30,25 +30,25 @@ export default () => <Button>Click</Button>;
 | --- | --- | --- | --- |
 | variant | string | primary | The button style |
 | size | string | md | The button size |
-`);
+`)
 
-doc.title; // "Button"
-doc.headings; // HeadingSection[]
-doc.codeBlocks; // CodeSection[]
-doc.tables; // TableSection[]
-doc.byType("code"); // filter sections by type
-doc.byLang("tsx"); // filter code blocks by language
-doc.search("variant"); // full-text search across sections
+doc.title // "Button"
+doc.headings // HeadingSection[]
+doc.codeBlocks // CodeSection[]
+doc.tables // TableSection[]
+doc.byType('code') // filter sections by type
+doc.byLang('tsx') // filter code blocks by language
+doc.search('variant') // full-text search across sections
 
 // Extract component metadata from parsed doc
-const [component] = extractComponents(doc);
-component.name; // "Button"
-component.imports; // ['import { Button } from "@ui/button";']
-component.examples; // [{ title: "Usage", lang: "tsx", code: "..." }]
-component.props; // [{ name: "variant", type: "string", default: "primary", ... }]
+const [component] = extractComponents(doc)
+component.name // "Button"
+component.imports // ['import { Button } from "@ui/button";']
+component.examples // [{ title: "Usage", lang: "tsx", code: "..." }]
+component.props // [{ name: "variant", type: "string", default: "primary", ... }]
 
 // Generate TypeScript interface from extracted props
-generateTypes(component);
+generateTypes(component)
 // export interface ButtonProps {
 //   /** The button style */
 //   variant?: string;
@@ -60,18 +60,18 @@ generateTypes(component);
 ### Parse from file or URL
 
 ```ts
-import { parseFile, fetchDocs } from "mdxtractor";
+import { parseFile, fetchDocs } from 'mdxtractor'
 
-const doc = await parseFile("./docs/button.md");
-const doc = await fetchDocs("https://raw.githubusercontent.com/.../button.md");
+const doc = await parseFile('./docs/button.md')
+const doc = await fetchDocs('https://raw.githubusercontent.com/.../button.md')
 ```
 
 ### Extract snippets
 
 ```ts
-import { extractSnippets } from "mdxtractor";
+import { extractSnippets } from 'mdxtractor'
 
-const snippets = extractSnippets(doc); // Map<string, string>
+const snippets = extractSnippets(doc) // Map<string, string>
 // key = filename (from comment) or "HeadingTitle.lang"
 ```
 
